@@ -5,12 +5,17 @@ get '/' do
 end
 
 post '/sign_in' do
-  # authentication
-  # save user id to session
-  redirect '/users/:id'
+  current_user = User.authenticate(params[:username], params[:password])
+  if current_user
+    session[:user_id] = current_user.id
+    redirect '/users/:id'
+  else
+    redirect '/invalid_login'
+  end
 end
 
 post '/sign_up' do
+  User.create(username: params[:username], password: params[:password])
   # create new user
   redirect '/'
 end
