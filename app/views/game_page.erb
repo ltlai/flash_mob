@@ -1,0 +1,10 @@
+<body style='padding-left: 200px;'>
+  <%= @card.question %>  
+  <form>
+    <input type='word' placehold='guess' name='guess'><br>
+    <input type='submit' value='guess!' action='/rounds/question_screen/<%=@round_id%>'>
+
+  </form>
+</body>
+
+

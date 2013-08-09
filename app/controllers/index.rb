@@ -22,16 +22,22 @@ get '/users/:id' do
 end
 
 post '/rounds/:deck_id' do
-  @current_round = prep_the_game
-  @current_round.id
-  redirect '/question_screen/:round_id'
+  @current_round = prep_the_game(params[:deck_id])
+  @round_id = @current_round.id
+  p @round_id
+  redirect '/rounds/question_screen/' + @round_id.to_s
 end
 
-get '/rounds/:round_id/question_screen' do 
-  if session[:deck].any?
+get '/rounds/question_screen/:round_id' do 
+  @cards = Round.find(params[:round_id]).deck.cards
+  @card = @cards.select { |card| card.shown == false }.sample
+  if @card
+    @card.shown = true
+    @round_id = params[:round_id]
     erb :game_page
   else
-    redirect '/users/#{sessions[:id]}'
+    reset_cards(@cards)
+    redirect '/users/' + sessions[:id].to_s
   end
 end
 
