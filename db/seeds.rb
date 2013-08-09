@@ -1,0 +1,6 @@
+User.create(username: "Franky", password: "frankenstein")
+User.create(username: "Shelly", password: "frankenstein")
+User.create(username: "Mary", password: "frankenstein")
+Card.create(question: "Washington's capitol", answer: "Olympia", deck_id: 1)
+Card.create(question: "California's capitol", answer: "Sacramento", deck_id: 1)
+Deck.create(name: "books")
