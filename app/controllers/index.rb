@@ -16,20 +16,22 @@ end
 
 post '/sign_up' do
   User.create(username: params[:username], password: params[:password])
-  # create new user
   redirect '/'
 end
 
 get '/users/:id' do
   # User Page with user stats
   # Displays all decks to choose from
+  @all_decks = Deck.all
   erb :user_page
 end
 
 post '/rounds/:deck_id' do
-  @current_round = prep_the_game
-  @current_round.id
-  redirect '/question_screen/:round_id'
+  # @current_round = prep_the_game
+  # @current_round.id
+  p params[:deck_id]
+  # redirect '/users/:id'
+  # redirect '/rounds/:round_id/question_screen'
 end
 
 get '/rounds/:round_id/question_screen' do 

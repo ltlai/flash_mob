@@ -1,1 +1,17 @@
-You're in the user page!
+<h1>Welcome to the User Page!</h1>
+
+<p>Available decks:</p>
+
+<form id="pick_deck" action="/rounds" method="post">
+  <% @all_decks.each do |deck| %>
+    <input type="radio" name="Decks" value=<%=deck.id%>> <%=deck.name%>
+    <br>
+  <% end %>
+  <br>
+</form>
+
+<br>
+
+<br>
+
+<br>
