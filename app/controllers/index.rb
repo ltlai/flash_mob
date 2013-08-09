@@ -21,7 +21,7 @@ get '/users/:id' do
   erb :user_page
 end
 
-get '/rounds/:deck_id' do
+post '/rounds/:deck_id' do
   @current_round = prep_the_game(params[:deck_id])
   @round_id = @current_round.id
   redirect '/rounds/question_screen/' + @round_id.to_s
@@ -37,8 +37,7 @@ get '/rounds/question_screen/:round_id' do
     erb :game_page
   else
     reset_cards(@cards)
-    erb :index
-    #redirect '/users/' + session[:id].to_s
+    redirect '/users/' + session[:id].to_s
   end
 end
 
@@ -49,7 +48,6 @@ post '/rounds/answer/:round_id/:card_id' do |round, card|
     @round.save
     erb :correct
   else
-    'incorrect!ILUGHWELIFUHWELIUVGHWLIEUGEFGHWELIUFEFHUW'
     @round.num_incorrect += 1
     @round.save
     erb :incorrect
