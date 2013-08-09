@@ -7,5 +7,6 @@ end
 def reset_cards(cards)
   cards.each do |card|
     card.shown = false
+    card.save
   end
 end

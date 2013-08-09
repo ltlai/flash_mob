@@ -21,10 +21,9 @@ get '/users/:id' do
   erb :user_page
 end
 
-post '/rounds/:deck_id' do
+get '/rounds/:deck_id' do
   @current_round = prep_the_game(params[:deck_id])
   @round_id = @current_round.id
-  p @round_id
   redirect '/rounds/question_screen/' + @round_id.to_s
 end
 
@@ -33,23 +32,29 @@ get '/rounds/question_screen/:round_id' do
   @card = @cards.select { |card| card.shown == false }.sample
   if @card
     @card.shown = true
+    @card.save
     @round_id = params[:round_id]
     erb :game_page
   else
     reset_cards(@cards)
-    redirect '/users/' + sessions[:id].to_s
+    erb :index
+    #redirect '/users/' + session[:id].to_s
   end
 end
 
-post '/rounds/:round_id/answer' do
-  # store correct/incorrect in session or in round object
+post '/rounds/answer/:round_id/:card_id' do |round, card|
+    @round = Round.find_by_id(round)
+  if params[:guess] == Card.find_by_id(card).answer 
+    @round.num_correct += 1
+    @round.save
+    erb :correct
+  else
+    'incorrect!ILUGHWELIFUHWELIUVGHWLIEUGEFGHWELIUFEFHUW'
+    @round.num_incorrect += 1
+    @round.save
+    erb :incorrect
+  end
 end
-
-get '/result_page'  do
-  # correct or incorrect
-  erb :result_page
-end
-
 
 
 =begin
