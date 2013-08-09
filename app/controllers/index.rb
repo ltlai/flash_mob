@@ -16,13 +16,13 @@ end
 
 post '/sign_up' do
   User.create(username: params[:username], password: params[:password])
-  # create new user
   redirect '/'
 end
 
 get '/users/:id' do
   # User Page with user stats
   # Displays all decks to choose from
+  @all_decks = Deck.all
   erb :user_page
 end
 
