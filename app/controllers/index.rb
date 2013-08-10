@@ -30,12 +30,11 @@ get '/users/:id' do
 end
 
 post '/rounds' do
-  @current_round = prep_the_game(params[:deck_id])
-  @round_id = @current_round.id
-  redirect '/rounds/question_screen/' + @round_id.to_s
+  @round = prep_the_game(params[:deck_id])
+  redirect "/rounds/#{@round.id}/question_screen"
 end
 
-get '/rounds/question_screen/:round_id' do 
+get '/rounds/:round_id/question_screen' do 
   @cards = Round.find(params[:round_id]).deck.cards
   @card = @cards.select { |card| card.shown == false }.sample
   if @card
@@ -54,16 +53,25 @@ post '/rounds/answer/:round_id/:card_id' do |round, card|
   if params[:guess].downcase == Card.find_by_id(card).answer.downcase
     @round.num_correct += 1
     @round.save
-    erb :correct
+    redirect "/rounds/answer/#{@round.id}/correct"
   else
     @round.num_incorrect += 1
     @round.save
-    erb :incorrect
+    redirect "/rounds/answer/#{@round.id}/incorrect"
   end
+end
+
+get '/rounds/answer/:round_id/correct' do
+  @round = Round.find_by_id(params[:round_id])
+  erb :correct
+end
+
+get '/rounds/answer/:round_id/incorrect' do
+  @round = Round.find_by_id(params[:round_id])
+  erb :incorrect
 end
 
 get '/users/stats/:id' do
   @stats = retrieve_stats(params[:id].to_i)
-  p @stats
   erb :user_stats
 end
