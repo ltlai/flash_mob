@@ -4,6 +4,31 @@
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
 }
+
+#stats {
+  background-color: #FA7878;
+}
+
+#stats_welcome {
+  text-align: center;
+}
+
+#games_played {
+  text-align: center;
+}
+
+.home {
+  float: left;
+  position: relative;
+  bottom:100px;
+  padding: 3px;
+  border: 1px solid #789BFA;
+  border-radius: 7px;
+  color: black;
+  background-color: #789BFA;
+}
+
