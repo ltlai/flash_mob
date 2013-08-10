@@ -1,4 +1,5 @@
 get '/' do
+  @messages = session.delete(:messages) || []
   erb :index
 end
 
@@ -6,14 +7,16 @@ post '/sign_in' do
   current_user = User.authenticate(params[:username], params[:password])
   if current_user
     session[:user_id] = current_user.id
-    redirect '/users/:id'
+    redirect "/users/#{current_user.id}"
   else
-    redirect '/invalid_login'
+    session[:messages] = ['Invalid login']
+    redirect '/'
   end
 end
 
 post '/sign_up' do
   User.create(username: params[:username], password: params[:password])
+  session[:messages] = ['New account created. Please sign in!']
   redirect '/'
 end
 
@@ -22,7 +25,7 @@ get '/users/:id' do
   erb :user_page
 end
 
-get '/rounds/:deck_id' do
+post '/rounds' do
   @current_round = prep_the_game(params[:deck_id])
   @round_id = @current_round.id
   redirect '/rounds/question_screen/' + @round_id.to_s
@@ -55,26 +58,8 @@ post '/rounds/answer/:round_id/:card_id' do |round, card|
   end
 end
 
-
-=begin
-
-1 - Homepage, login, create account
-  '/'
-  session[:id] = user_id
-
-2 - User page
-  '/users/:id'
-  displaying decks
-  -linked to rounds
-  previous rounds (stretch)
-
-3 - Running a Round
-  '/rounds/:deck_id'
-  Round.create with user_id(session) and deck_id
-  -logic
-    -shuffle/find deck
-
-in the round model -
-  we need method to iterate our deck
- 
-=end
+get '/users/stats/:id' do
+  @stats = retrieve_stats(params[:id].to_i)
+  p @stats
+  erb :user_stats
+end
