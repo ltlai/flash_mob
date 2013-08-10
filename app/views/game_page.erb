@@ -1,10 +1,11 @@
-<body style='padding-left: 200px;'>
-  <%= @card.question %>  
+<div class="container">
+
+  <h4><%= @card.question %></h4>  
   <form action='/rounds/answer/<%=@round_id%>/<%=@card.id%>' method='post'>
-    <input type='word' placeholder='guess' name='guess'><br>
+    <input type='word' placeholder='guess' name='guess'><br><br>
     <input type='submit' value='guess!'>
   </form>
-</body>
 
+</div>
 
 
