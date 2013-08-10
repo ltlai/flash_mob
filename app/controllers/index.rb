@@ -31,6 +31,8 @@ end
 
 post '/rounds' do
   @round = prep_the_game(params[:deck_id])
+  cards = Round.find(@round.id).deck.cards
+  reset_cards(cards)
   redirect "/rounds/#{@round.id}/question_screen"
 end
 
