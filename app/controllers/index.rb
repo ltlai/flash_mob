@@ -16,7 +16,7 @@ end
 
 post '/sign_up' do
   User.create(username: params[:username], password: params[:password])
-  session[:messages] = ['Account created']
+  session[:messages] = ['New account created. Please sign in!']
   redirect '/'
 end
 
