@@ -4,8 +4,9 @@
 
 <form id="pick_deck" action="/rounds" method="post">
   <% @all_decks.each do |deck| %>
-    <input type="radio" name="Decks" value=<%=deck.id%>> <%=deck.name%>
+    <input type="radio" name="deck_id" value="<%=deck.id%>"> <%=deck.name%>
     <br>
   <% end %>
   <br>
+  <input type="submit" value="Start game!">
 </form>

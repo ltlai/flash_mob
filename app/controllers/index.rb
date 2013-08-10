@@ -6,7 +6,7 @@ post '/sign_in' do
   current_user = User.authenticate(params[:username], params[:password])
   if current_user
     session[:user_id] = current_user.id
-    redirect '/users/:id'
+    redirect "/users/#{current_user.id}"
   else
     redirect '/invalid_login'
   end
@@ -22,7 +22,7 @@ get '/users/:id' do
   erb :user_page
 end
 
-get '/rounds/:deck_id' do
+post '/rounds' do
   @current_round = prep_the_game(params[:deck_id])
   @round_id = @current_round.id
   redirect '/rounds/question_screen/' + @round_id.to_s
