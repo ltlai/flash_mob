@@ -1,9 +1,26 @@
-<h1>Stats, Yo!</h1>
-
-<%@stats.each do |stat|%>
-  <% deck = Deck.find_by_id(stat.deck_id).name%>
-  Deck: <%= deck %>
-  Correct: <%=stat.num_correct%>   
-  Incorrect: <%=stat.num_incorrect%>
-  Percent: <%=(stat.num_correct / (stat.num_correct + stat.num_incorrect).to_f * 100)%>%<br>
-<%end%>
+<div class='container' id='stats'>
+  <h1 id='stats_welcome'>Stats, Yo!</h1>
+  <h2 id='games_played'>Games Played: <%=@stats.length%></h2>
+  <a href='/users/<%=session[:user_id]%>' class='home'>Home</a>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Deck</th>
+        <th>Correct</th>
+        <th>Incorrect</th>
+        <th>Percent</th>
+      </tr>
+      </thead>
+      <tbody>
+    <%@stats.each do |stat|%>
+      <% deck = Deck.find_by_id(stat.deck_id).name%>
+        <tr>
+        <td><%= deck %></td>
+        <td><%=stat.num_correct%></td>
+        <td><%=stat.num_incorrect%></td>
+        <td><%=(stat.num_correct / (stat.num_correct + stat.num_incorrect).to_f * 100).round(2)%>%</td>
+        </tr>
+    <%end%>
+    </tbody>
+  </table>
+</div>
