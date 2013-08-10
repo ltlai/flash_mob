@@ -1,7 +1,7 @@
 <div class="container">
 
   <h3><%= @card.question %></h3>  
-  <form action='/rounds/answer/<%=@round_id%>/<%=@card.id%>' method='post'>
+  <form action='/rounds/<%=@round_id%>/cards/<%=@card.id%>/answer' method='post'>
   	<div class="input-group">
   		<span class="input-group-addon"></span>
   		<input type="text" class="form-control" placeholder="Guess" name='guess'></br>
