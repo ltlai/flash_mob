@@ -1,4 +1,6 @@
-<p>CORRECT!</p>
-
-<a href='/rounds/<%=@round.id%>/question_screen'>Continue</a>
-
+<div class="container">
+	<h3>CORRECT!</h3>
+	<form action='/rounds/<%=@round.id%>/question_screen'>
+    	<button type="submit" value="Continue" class="btn btn-default navbar-btn">Continue</button>
+	</form>
+</div>
