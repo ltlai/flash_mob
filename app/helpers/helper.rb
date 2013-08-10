@@ -15,3 +15,10 @@ def retrieve_stats(user_id)
   @rounds = Round.where(user_id: user_id)
 end
 
+def correct?(guess, card)
+  guess.downcase == Card.find_by_id(card).answer.downcase
+end
+
+def taken?(username)
+  User.find_by_username(username)
+end
