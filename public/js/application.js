@@ -3,5 +3,4 @@ $(document).ready(function() {
     var value = e.toElement.value;
     window.location = "/rounds/"+value;
   });
-
 });
