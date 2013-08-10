@@ -45,8 +45,15 @@ get '/rounds/:round_id/question_screen' do
     erb :game_page
   else
     reset_cards(@cards)
-    redirect "/users/#{session[:user_id]}"
+    redirect "/rounds/#{@round_id}/summary"
   end
+end
+
+get '/rounds/:round_id/summary' do
+  @round = Round.find_by_id(params[:round_id])
+  @correct_guesses = @round.num_correct
+  @incorrect_guesses = @round.num_incorrect
+  erb :round_summary_page
 end
 
 post '/rounds/:round_id/cards/:card_id/answer' do |round, card|
