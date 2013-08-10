@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :rounds
+  has_many :decks, through: :rounds
   
   def self.authenticate(username, password)
     current_user = User.find_by_username(username)
@@ -10,7 +12,4 @@ class User < ActiveRecord::Base
       return nil
     end
   end
-
-  has_many :rounds
-  has_many :decks, through: :rounds
 end

@@ -54,27 +54,3 @@ post '/rounds/answer/:round_id/:card_id' do |round, card|
     erb :incorrect
   end
 end
-
-
-=begin
-
-1 - Homepage, login, create account
-  '/'
-  session[:id] = user_id
-
-2 - User page
-  '/users/:id'
-  displaying decks
-  -linked to rounds
-  previous rounds (stretch)
-
-3 - Running a Round
-  '/rounds/:deck_id'
-  Round.create with user_id(session) and deck_id
-  -logic
-    -shuffle/find deck
-
-in the round model -
-  we need method to iterate our deck
- 
-=end
