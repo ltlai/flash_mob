@@ -1,0 +1,9 @@
+<h1>Stats, Yo!</h1>
+
+<%@stats.each do |stat|%>
+  <% deck = Deck.find_by_id(stat.deck_id).name%>
+  Deck: <%= deck %>
+  Correct: <%=stat.num_correct%>   
+  Incorrect: <%=stat.num_incorrect%>
+  Percent: <%=(stat.num_correct / (stat.num_correct + stat.num_incorrect).to_f * 100)%>%<br>
+<%end%>
