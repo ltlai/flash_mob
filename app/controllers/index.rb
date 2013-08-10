@@ -15,8 +15,12 @@ post '/sign_in' do
 end
 
 post '/sign_up' do
-  User.create(username: params[:username], password: params[:password])
-  session[:messages] = ['New account created. Please sign in!']
+  if User.find_by_username(params[:username]) == nil
+    User.create!(username: params[:username], password: params[:password])
+    session[:messages] = ['New account created. Please sign in!']
+  else
+    session[:messages] = ['Sorry, that username has been taken']
+  end
   redirect '/'
 end
 
