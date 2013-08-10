@@ -1,4 +1,5 @@
 get '/' do
+  @messages = session.delete(:messages) || []
   erb :index
 end
 
@@ -8,12 +9,14 @@ post '/sign_in' do
     session[:user_id] = current_user.id
     redirect "/users/#{current_user.id}"
   else
-    redirect '/invalid_login'
+    session[:messages] = ['Invalid login']
+    redirect '/'
   end
 end
 
 post '/sign_up' do
   User.create(username: params[:username], password: params[:password])
+  session[:messages] = ['Account created']
   redirect '/'
 end
 

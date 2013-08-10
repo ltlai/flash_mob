@@ -1,4 +1,14 @@
 <div class="container">
+
+  <% if @messages.any? %>
+    <% @messages.each do |message| %>
+      <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+
   <h1>Welcome to Flashmob!</h1>
   
   <p>Hello, beautiful user!</p>
