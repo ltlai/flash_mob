@@ -1,9 +1,10 @@
 <body style='padding-left: 200px;'>
   <%= @card.question %>  
   <form action='/rounds/answer/<%=@round_id%>/<%=@card.id%>' method='post'>
-    <input type='word' placehold='guess' name='guess'><br>
+    <input type='word' placeholder='guess' name='guess'><br>
     <input type='submit' value='guess!'>
   </form>
 </body>
+
 
 

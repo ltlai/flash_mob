@@ -1,6 +1,4 @@
 get '/' do
-  # Form to create account
-  # Form to log in
   erb :index
 end
 
@@ -20,8 +18,6 @@ post '/sign_up' do
 end
 
 get '/users/:id' do
-  # User Page with user stats
-  # Displays all decks to choose from
   @all_decks = Deck.all
   erb :user_page
 end
@@ -48,7 +44,7 @@ end
 
 post '/rounds/answer/:round_id/:card_id' do |round, card|
     @round = Round.find_by_id(round)
-  if params[:guess] == Card.find_by_id(card).answer 
+  if params[:guess].downcase == Card.find_by_id(card).answer.downcase
     @round.num_correct += 1
     @round.save
     erb :correct

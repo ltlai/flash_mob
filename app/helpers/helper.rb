@@ -1,5 +1,5 @@
 def prep_the_game(deck_id)
-  @user_id = 2
+  @user_id = session[:user_id]
   @new_round = Round.create(deck_id: deck_id, user_id: @user_id)
   return @new_round
 end
