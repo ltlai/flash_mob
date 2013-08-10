@@ -10,3 +10,8 @@ def reset_cards(cards)
     card.save
   end
 end
+
+def retrieve_stats(user_id)
+  @rounds = Round.where(user_id: user_id)
+end
+

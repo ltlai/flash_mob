@@ -55,6 +55,12 @@ post '/rounds/answer/:round_id/:card_id' do |round, card|
   end
 end
 
+get '/users/stats/:id' do
+  @stats = retrieve_stats(params[:id].to_i)
+  p @stats
+  erb :user_stats
+end
+
 
 =begin
 
