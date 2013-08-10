@@ -1,11 +1,13 @@
 <div class="container">
 
-  <h4><%= @card.question %></h4>  
+  <h3><%= @card.question %></h3>  
   <form action='/rounds/answer/<%=@round_id%>/<%=@card.id%>' method='post'>
-    <input type='word' placeholder='guess' name='guess'><br><br>
-    <input type='submit' value='guess!'>
+  	<div class="input-group">
+  		<span class="input-group-addon"></span>
+  		<input type="text" class="form-control" placeholder="Guess" name='guess'></br>
+  		<button type="submit" value="GUESS!" class="btn btn-default navbar-btn">GUESS!</button>
+    </div>
   </form>
-
 </div>
 
 

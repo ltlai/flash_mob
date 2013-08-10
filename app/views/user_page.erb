@@ -1,18 +1,17 @@
 <div class="container">
 
-<h1>Welcome to the User Page!</h1>
-<h3>Available decks:</h3>
-<form id="pick_deck" action="/rounds" method="post">
-  <% @all_decks.each do |deck| %>
-    <input type="radio" name="deck_id" value="<%=deck.id%>"> <%=deck.name%>
-    <br>
-  <% end %>
-  <br>
-  <input type="submit" value="Start game!">
-</form>
+<h1>Welcome <%=User.find(session[:user_id]).username%></h1>
+	<h3>Available decks to play:</h3>
+	<form id="pick_deck" action="/rounds" method="post">
+  		<% @all_decks.each do |deck| %>
+    	<input type="radio" name="deck_id" value="<%=deck.id%>"> <%=deck.name%><br>
+  		<% end %><br>
+  		<button type="submit" value="Start game!" class="btn btn-default navbar-btn">Start Game</button>
+	</form>
 <br>
 <br>
-<br>
-<a href='/users/stats/<%=session[:user_id]%>'>Stats</a>
+	<form action='/users/stats/<%=session[:user_id]%>'>
+    	<button type="submit" value="Continue" class="btn btn-default navbar-btn">Stats</button>
+	</form>
 
 </div>

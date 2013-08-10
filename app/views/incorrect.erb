@@ -1,5 +1,6 @@
 <div class="container">
-<p>INCORRECT!</p>
-
-<a href='/rounds/question_screen/<%=@round.id%>'>Continue</a>
+	<h3>INCORRECT!</h3>
+	<form action='/rounds/question_screen/<%=@round.id%>'>
+    	<button type="submit" value="Continue" class="btn btn-default navbar-btn">Continue</button>
+	</form>
 </div>
