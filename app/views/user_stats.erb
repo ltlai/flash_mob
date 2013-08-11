@@ -1,7 +1,10 @@
 <div class='container' id='stats'>
-  <h1 id='stats_welcome'>Stats, Yo!</h1>
-  <h2 id='games_played'>Games Played: <%=@stats.length%></h2>
-  <a href='/users/<%=session[:user_id]%>' class='home'>Home</a>
+  <h1 id='stats_welcome'>Stats for:  <%=User.find(session[:user_id]).username%></h1>
+  	<h2 id='games_played'>Games Played: <%=@stats.length%></h2>
+  		<form action='/users/<%=session[:user_id]%>' >
+    		<button type="submit" value="Home" class="btn btn-default navbar-btn">Home</button>
+		</form>
+
     <table class="table table-hover">
       <thead>
       <tr>
@@ -9,18 +12,18 @@
         <th>Correct</th>
         <th>Incorrect</th>
         <th>Percent</th>
-      </tr>
-      </thead>
-      <tbody>
-    <%@stats.each do |stat|%>
-      <% deck = Deck.find_by_id(stat.deck_id).name%>
+      	</tr>
+      		</thead>
+      	<tbody>
+    		<%@stats.each do |stat|%>
+      		<% deck = Deck.find_by_id(stat.deck_id).name%>
         <tr>
-        <td><%= deck %></td>
-        <td><%=stat.num_correct%></td>
-        <td><%=stat.num_incorrect%></td>
-        <td><%=(stat.num_correct / (stat.num_correct + stat.num_incorrect).to_f * 100).round(2)%>%</td>
+        	<td><%= deck %></td>
+        	<td><%=stat.num_correct%></td>
+        	<td><%=stat.num_incorrect%></td>
+        	<td><%=(stat.num_correct / (stat.num_correct + stat.num_incorrect).to_f * 100).round(2)%>%</td>
         </tr>
-    <%end%>
+    	<%end%>
     </tbody>
   </table>
 </div>
