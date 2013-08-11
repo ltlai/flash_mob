@@ -17,18 +17,18 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/application.js"></script>
-
+  
 </head>
-  <body background="7126.png">
-    <h1 style="text-align:center;">Flash Mob!</h1>
-  </body>
 
+<body background="7126.png">
+  <h1 style="text-align:center;">Flash Mob!</h1>
   <% if session[:user_id] %>
-    <div class="navbar">
-      <a href="/users/<%= session[:user_id] %>" class="navbar-link">Home</a><br>
-      <a href="/sign_out" class="navbar-link">Sign Out</a>
-    </div>
-  <% end %>
+  <div class="navbar">
+    <a href="/users/<%= session[:user_id] %>" class="navbar-link">Home</a><br>
+    <a href="/sign_out" class="navbar-link">Sign Out</a>
+  </div>
+<% end %>
+</body>
 
-  <%= yield %>
+<%= yield %>
 </html>

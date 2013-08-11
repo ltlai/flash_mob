@@ -2,7 +2,7 @@
 
   <% if @messages.any? %>
     <% @messages.each do |message| %>
-      <div class="alert">
+      <div class="alert alert-danger">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <%= message %>
       </div>
@@ -11,7 +11,7 @@
 
   <h1>Welcome!</h1>
   <img src="/img/flash_mob_logo.gif">
-  <p>Already in the mob?</p>
+  <p><strong>Already in the mob?</strong></p>
   
   <form id="sign_in" action="/sign_in" method="post">
     <div class="input-group">
@@ -23,7 +23,7 @@
   </form>
   <br>
   <br>
-  <p>Want in?</p>
+  <p><strong>Want in?</strong></p>
   <form id="sign_up" action="/sign_up" method="post">
     <input type="text" class="form-control" placeholder ="Username" name="username">
     <br>
