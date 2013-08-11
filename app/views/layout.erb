@@ -28,12 +28,6 @@
       <a href="/users/<%= session[:user_id] %>" class="navbar-link">Home</a><br>
       <a href="/sign_out" class="navbar-link">Sign Out</a>
     </div>
-    <!-- <span id="home" class="navbar">
-      <a href="/users/<%= session[:user_id] %>" class="navbar-link">Home</a>
-    </span>
-    <span id="sign_out">
-      <a href="/sign_out">Sign Out</a>
-    </span> -->
   <% end %>
 
   <%= yield %>
