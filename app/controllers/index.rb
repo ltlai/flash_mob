@@ -86,3 +86,11 @@ get '/users/stats/:id' do
   @stats = retrieve_stats(params[:id])
   erb :user_stats
 end
+
+
+post '/create_deck' do
+  p params
+  @deck =Deck.create(params)
+  @all_decks = Deck.all
+  erb :user_page
+end

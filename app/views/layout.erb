@@ -24,8 +24,18 @@
   <h1 style="text-align:center;">Flash Mob!</h1>
   <% if session[:user_id] %>
   <div class="navbar">
-    <a href="/users/<%= session[:user_id] %>" class="navbar-link">Home</a><br>
-    <a href="/sign_out" class="navbar-link">Sign Out</a>
+  <ul class="nav navbar-nav">
+    <li class="active"><a href="/users/<%= session[:user_id] %>">Home</a></li>
+    <li><a href="/sign_out">Sign Out</a></li>
+  </ul>
+
+
+<!--     <form action="/users/<%= session[:user_id] %>" >
+      <button type="submit" value="Return" class="btn btn-default navbar-btn">Home</button>
+    </form>
+    <form action="/sign_out" >
+      <button type="submit" value="Return" class="btn btn-default navbar-btn">Sign Out</button>
+    </form> -->
   </div>
 <% end %>
 </body>
