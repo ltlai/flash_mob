@@ -23,5 +23,12 @@
     <h1 style="text-align:center;">Flash Mob!</h1>
   </body>
 
+  <% if session[:user_id] %>
+    <div class="navbar">
+      <a href="/users/<%= session[:user_id] %>" class="navbar-link">Home</a><br>
+      <a href="/sign_out" class="navbar-link">Sign Out</a>
+    </div>
+  <% end %>
+
   <%= yield %>
 </html>

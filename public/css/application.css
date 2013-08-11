@@ -22,6 +22,10 @@ th {
   text-align: center;
 }
 
+.navbar {
+  padding-left: 18%;
+}
+
 .home {
   float: left;
   position: relative;
