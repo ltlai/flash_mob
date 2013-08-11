@@ -1,7 +1,15 @@
-<h1>You've finished the round!</h1>
+<div class="container">
+ 
+ 	<h1>You've finished the round!</h1>
 
-You guessed <%= @correct_guesses %> cards correctly!
+<p>You guessed <%= @correct_guesses %> cards correctly!
+</p>
+<p>You guessed <%= @incorrect_guesses %> cards incorrectly!
+</p>
 <br>
-You guessed <%= @incorrect_guesses %> cards incorrectly!
-<br>
-<a href='/users/<%=@round.user_id%>'>Return to your page</a>
+
+<form action='/users/<%=@round.user_id%>'>
+   <button type="submit" value="Return" class="btn btn-default navbar-btn">Return to your page</button>
+</form>
+
+</div>
