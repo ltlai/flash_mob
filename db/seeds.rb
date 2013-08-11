@@ -30,3 +30,12 @@ Card.create(question: "A creature with a man's torso and a horse's body is a ___
 10.times do 
   User.create(:username => Faker::Internet.user_name, :password => 'password')
 end
+
+User.create(username: "Clark Kent", password: 'password')
+
+Deck.create(name: "Superheroes")
+my_superheroes_deck = Deck.find_by_name("Superheroes")
+
+Card.create(question: "Who's the fastest superhero?", answer: "Flash", deck_id: my_superheroes_deck.id)
+Card.create(question: "Who's the best superhero?", answer: "Flash", deck_id: my_superheroes_deck.id)
+Card.create(question: "What does the iPad not support?", answer: "Flash", deck_id: my_superheroes_deck.id)
