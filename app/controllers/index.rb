@@ -89,8 +89,12 @@ end
 
 
 post '/create_deck' do
-  p params
   @deck =Deck.create(params)
-  @all_decks = Deck.all
-  erb :user_page
+  erb :deck_questions
+end
+
+post '/create_cards' do
+  @deck =Deck.find(params[:deck_id])
+  Card.create(params)
+  erb :deck_questions
 end

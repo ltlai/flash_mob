@@ -1,0 +1,24 @@
+<div class="container">
+
+<h1><%=User.find(session[:user_id]).username%>:</h1>
+	<h3>Lets continue to create the cards for your Deck: <%=@deck.name%></h3>
+	
+<br>
+<br>
+	<form  method='post' action='/create_cards'>
+  	<div class="input-group">
+  		<span class="input-group-addon"></span>
+  		<input type="text" class="form-control" placeholder="question" name='question'></br>
+  		<input type="hidden" id="hidden1" name = 'deck_id' value= '<%=@deck.id%>' >
+  		<input type="text" class="form-control" placeholder="answer" name='answer'></br>
+  		<button type="submit" value="card" class="btn btn-default navbar-btn">Submit Card</button>
+    </div>
+  	</form>
+<br>
+<br>
+	<h4>Return to users page when you finished creating cards.</h4>
+  	<form action='/users/<%=session[:user_id]%>'>
+    	<button type="submit" value="Continue" class="btn btn-default navbar-btn">Users Page</button>
+	</form>
+
+</div>
