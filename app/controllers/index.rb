@@ -24,6 +24,11 @@ post '/sign_up' do
   redirect '/'
 end
 
+get '/sign_out' do
+  session[:user_id] = nil
+  redirect '/'
+end
+
 get '/users/:id' do
   @all_decks = Deck.all
   erb :user_page
