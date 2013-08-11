@@ -42,9 +42,6 @@ th {
    background:#999;
 }
 
-button {
-	background-color: red;
-}
 .btn {
   background-color: hsl(0, 69%, 22%) !important;
   background-repeat: repeat-x;
@@ -61,3 +58,12 @@ button {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
   -webkit-font-smoothing: antialiased;
 }
+
+body
+{
+  background-image: url('/img/flash_running_fade.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom;
+}
+
